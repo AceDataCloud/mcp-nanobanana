@@ -54,7 +54,7 @@ echo "ACEDATACLOUD_API_TOKEN=your_token_here" > .env
 
 ```bash
 # Run the server
-mcp-nanobanana
+mcp-nanobanana-pro
 
 # Or with Python directly
 python main.py
@@ -71,7 +71,7 @@ Add to your Claude Desktop configuration:
 {
   "mcpServers": {
     "nanobanana": {
-      "command": "mcp-nanobanana",
+      "command": "mcp-nanobanana-pro",
       "env": {
         "ACEDATACLOUD_API_TOKEN": "your_api_token_here"
       }
@@ -87,7 +87,7 @@ Or if using uv:
   "mcpServers": {
     "nanobanana": {
       "command": "uv",
-      "args": ["run", "--directory", "/path/to/MCPNanoBanana", "mcp-nanobanana"],
+      "args": ["run", "--directory", "/path/to/MCPNanoBanana", "mcp-nanobanana-pro"],
       "env": {
         "ACEDATACLOUD_API_TOKEN": "your_api_token_here"
       }
@@ -176,7 +176,7 @@ background. Serene and masterful mood.
 ### Command Line Options
 
 ```bash
-mcp-nanobanana --help
+mcp-nanobanana-pro --help
 
 Options:
   --version          Show version

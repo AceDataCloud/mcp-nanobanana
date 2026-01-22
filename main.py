@@ -42,7 +42,7 @@ def safe_print(text: str) -> None:
 def get_version() -> str:
     """Get the package version."""
     try:
-        return metadata.version("mcp-nanobanana")
+        return metadata.version("mcp-nanobanana-pro")
     except metadata.PackageNotFoundError:
         return "dev"
 
@@ -54,9 +54,9 @@ def main() -> None:
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  mcp-nanobanana                    # Run with stdio transport (default)
-  mcp-nanobanana --transport http   # Run with HTTP transport
-  mcp-nanobanana --version          # Show version
+  mcp-nanobanana-pro                    # Run with stdio transport (default)
+  mcp-nanobanana-pro --transport http   # Run with HTTP transport
+  mcp-nanobanana-pro --version          # Show version
 
 Environment Variables:
   ACEDATACLOUD_API_TOKEN              API token from AceDataCloud (required)
@@ -67,7 +67,7 @@ Environment Variables:
     parser.add_argument(
         "--version",
         action="version",
-        version=f"mcp-nanobanana {get_version()}",
+        version=f"mcp-nanobanana-pro {get_version()}",
     )
     parser.add_argument(
         "--transport",
