@@ -1,0 +1,110 @@
+"""Image generation and editing tools for NanoBanana API."""
+
+from typing import Annotated
+
+from pydantic import Field
+
+from core.client import client
+from core.server import mcp
+from core.utils import format_image_result
+
+
+@mcp.tool()
+async def nanobanana_generate_image(
+    prompt: Annotated[
+        str,
+        Field(
+            description="Description of the image to generate. Be descriptive about subject, atmosphere, lighting, camera/lens, and quality. Example: 'A photorealistic close-up portrait of an elderly Japanese ceramicist with deep wrinkles and a warm smile, soft golden hour light, 85mm portrait lens, bokeh background'"
+        ),
+    ],
+    callback_url: Annotated[
+        str,
+        Field(
+            description="Optional webhook URL to receive the result asynchronously. The API will POST the result to this URL when complete."
+        ),
+    ] = "",
+) -> str:
+    """Generate an AI image from a text prompt using Google's Nano Banana model.
+
+    This creates high-quality images from detailed text descriptions. The more
+    descriptive your prompt, the better the results.
+
+    Use this when:
+    - You want to generate a new image from scratch
+    - You have a detailed description of the desired image
+    - You need photorealistic or artistic image generation
+
+    Prompt writing tips:
+    - Include: Main subject + Atmosphere + Lighting + Camera/Lens + Quality keywords
+    - Example: "Urban career woman, backlit sunlight, film grain, orange-gold tones, hopeful dawn"
+
+    Returns:
+        Task ID, trace ID, and generated image URL.
+    """
+    payload: dict = {
+        "action": "generate",
+        "prompt": prompt,
+    }
+
+    if callback_url:
+        payload["callback_url"] = callback_url
+
+    result = await client.generate_image(**payload)
+    return format_image_result(result)
+
+
+@mcp.tool()
+async def nanobanana_edit_image(
+    prompt: Annotated[
+        str,
+        Field(
+            description="Description of the edit to perform. Describe how the images should be combined or modified. Example: 'let this person wear this T-shirt', 'place this product in a modern kitchen scene'"
+        ),
+    ],
+    image_urls: Annotated[
+        list[str],
+        Field(
+            description="List of image URLs to edit. Can be HTTP/HTTPS URLs (publicly accessible) or Base64-encoded images (data:image/png;base64,...). When combining multiple images, describe their relationship in the prompt."
+        ),
+    ],
+    callback_url: Annotated[
+        str,
+        Field(
+            description="Optional webhook URL to receive the result asynchronously. The API will POST the result to this URL when complete."
+        ),
+    ] = "",
+) -> str:
+    """Edit or combine images using AI based on a text prompt.
+
+    This allows you to modify existing images or combine multiple images together.
+    Perfect for virtual try-on, product placement, image enhancement, and more.
+
+    Use this when:
+    - You want to combine multiple images (e.g., person + clothing)
+    - You want to modify an existing image
+    - You need virtual try-on (putting clothes on a person)
+    - You want to place products in different scenes
+    - You need to change attributes (materials, colors, styles)
+
+    Common use cases:
+    - Portrait replacement: Try different clothing on same person
+    - Product scene composition: Place products in realistic environments
+    - Attribute replacement: Change materials, colors, or variants
+    - Poster editing: Rapidly change styles or themes
+    - 2D to 3D conversion: Convert images to 3D product mockups
+    - Image restoration: Restore old or damaged photos
+
+    Returns:
+        Task ID, trace ID, and edited image URL.
+    """
+    payload: dict = {
+        "action": "edit",
+        "prompt": prompt,
+        "image_urls": image_urls,
+    }
+
+    if callback_url:
+        payload["callback_url"] = callback_url
+
+    result = await client.edit_image(**payload)
+    return format_image_result(result)
