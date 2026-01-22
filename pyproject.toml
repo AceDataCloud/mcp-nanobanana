@@ -1,5 +1,5 @@
 [project]
-name = "mcp-nano-banana"
+name = "mcp-nanobanana"
 version = "0.1.0"
 description = "MCP Server for NanoBanana AI Image Generation via AceDataCloud API"
 readme = "README.md"
@@ -62,18 +62,18 @@ release = [
     "twine>=5.0.0",
 ]
 all = [
-    "mcp-nano-banana[dev,test,release]",
+    "mcp-nanobanana[dev,test,release]",
 ]
 
 [project.scripts]
-mcp-nano-banana = "main:main"
+mcp-nanobanana = "main:main"
 
 [project.urls]
-Homepage = "https://github.com/AceDataCloud/mcp-nanobanana"
+Homepage = "https://github.com/AceDataCloud/MCPNanoBanana"
 Documentation = "https://platform.acedata.cloud/documents/23985a11-d713-41d1-ad84-24b021805b3d"
-Repository = "https://github.com/AceDataCloud/mcp-nanobanana"
-Issues = "https://github.com/AceDataCloud/mcp-nanobanana/issues"
-Changelog = "https://github.com/AceDataCloud/mcp-nanobanana/blob/main/CHANGELOG.md"
+Repository = "https://github.com/AceDataCloud/MCPNanoBanana"
+Issues = "https://github.com/AceDataCloud/MCPNanoBanana/issues"
+Changelog = "https://github.com/AceDataCloud/MCPNanoBanana/blob/main/CHANGELOG.md"
 
 [build-system]
 requires = ["hatchling<1.26.0"]

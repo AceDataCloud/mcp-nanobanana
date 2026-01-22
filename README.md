@@ -30,8 +30,8 @@ Get your API token from [AceDataCloud Platform](https://platform.acedata.cloud):
 
 ```bash
 # Clone the repository
-git clone https://github.com/AceDataCloud/mcp-nanobanana.git
-cd mcp-nanobanana
+git clone https://github.com/AceDataCloud/MCPNanoBanana.git
+cd MCPNanoBanana
 
 # Install with pip
 pip install -e .
@@ -54,7 +54,7 @@ echo "ACEDATA_API_TOKEN=your_token_here" > .env
 
 ```bash
 # Run the server
-mcp-nano-banana
+mcp-nanobanana
 
 # Or with Python directly
 python main.py
@@ -71,7 +71,7 @@ Add to your Claude Desktop configuration:
 {
   "mcpServers": {
     "nanobanana": {
-      "command": "mcp-nano-banana",
+      "command": "mcp-nanobanana",
       "env": {
         "ACEDATA_API_TOKEN": "your_api_token_here"
       }
@@ -87,7 +87,7 @@ Or if using uv:
   "mcpServers": {
     "nanobanana": {
       "command": "uv",
-      "args": ["run", "--directory", "/path/to/mcp-nanobanana", "mcp-nano-banana"],
+      "args": ["run", "--directory", "/path/to/MCPNanoBanana", "mcp-nanobanana"],
       "env": {
         "ACEDATA_API_TOKEN": "your_api_token_here"
       }
@@ -176,7 +176,7 @@ background. Serene and masterful mood.
 ### Command Line Options
 
 ```bash
-mcp-nano-banana --help
+mcp-nanobanana --help
 
 Options:
   --version          Show version
@@ -190,8 +190,8 @@ Options:
 
 ```bash
 # Clone repository
-git clone https://github.com/AceDataCloud/mcp-nanobanana.git
-cd mcp-nanobanana
+git clone https://github.com/AceDataCloud/MCPNanoBanana.git
+cd MCPNanoBanana
 
 # Create virtual environment
 python -m venv .venv
