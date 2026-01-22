@@ -1,5 +1,5 @@
 [project]
-name = "mcp-nanobanana"
+name = "mcp-nano-banana"
 version = "0.1.0"
 description = "MCP Server for NanoBanana AI Image Generation via AceDataCloud API"
 readme = "README.md"
@@ -62,11 +62,11 @@ release = [
     "twine>=5.0.0",
 ]
 all = [
-    "mcp-nanobanana[dev,test,release]",
+    "mcp-nano-banana[dev,test,release]",
 ]
 
 [project.scripts]
-mcp-nanobanana = "main:main"
+mcp-nano-banana = "main:main"
 
 [project.urls]
 Homepage = "https://github.com/AceDataCloud/mcp-nanobanana"
