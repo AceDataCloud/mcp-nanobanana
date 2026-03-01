@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: mcp-nanobanana
-          image: ghcr.io/acedatacloud/mcp-nanobanana:latest
+          image: ghcr.io/acedatacloud/mcp-nanobanana:${TAG}
           ports:
             - containerPort: 8000
               protocol: TCP
